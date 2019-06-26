@@ -1,0 +1,9 @@
+django==2.2.2
+psycopg2==2.8.3
+pygdal==2.1.2.3
+django-model-utils==3.2.0
+djangorestframework==3.9.4
+djangorestframework_simplejwt==4.3.0
+pytest==4.6.3
+pytest-django==3.5.0
+djangorestframework-gis==0.14
