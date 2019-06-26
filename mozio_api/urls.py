@@ -19,6 +19,7 @@ from rest_framework import routers
 from providers.views.provider import ProviderViewSet
 from service_areas.views.service_area import ServiceAreaViewSet
 from rest_framework_simplejwt import views as jwt_views
+from rest_framework.documentation import include_docs_urls
 
 
 router = routers.DefaultRouter()
@@ -27,6 +28,7 @@ router.register(r'service-areas', ServiceAreaViewSet, basename='service_areas')
 
 
 urlpatterns = [
+    path('docs/', include_docs_urls(title='Docs')),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path(r'api/', include(router.urls)),

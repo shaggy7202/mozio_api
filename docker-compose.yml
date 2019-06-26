@@ -8,9 +8,10 @@ services:
       - POSTGRES_PASSWORD=testpass
   web:
     build: .
-    command: gunicorn --reload mozio_api.wsgi:application -b 0.0.0.0:8000
+    command: bash -c "python manage.py collectstatic --no-input && gunicorn mozio_api.wsgi -b 0.0.0.0:8000"
     volumes:
       - .:/code
+      - ./static:/static
     expose:
       - "8000"
     depends_on:
@@ -22,5 +23,6 @@ services:
       - "8000:8000"
     volumes:
       - ./nginx:/etc/nginx/conf.d
+      - ./static:/static
     depends_on:
       - web
