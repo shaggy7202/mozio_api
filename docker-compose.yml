@@ -8,10 +8,19 @@ services:
       - POSTGRES_PASSWORD=testpass
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn --reload mozio_api.wsgi:application -b 0.0.0.0:8000
     volumes:
       - .:/code
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     depends_on:
       - db
+  nginx:
+    image: nginx
+    hostname: nginx
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - web

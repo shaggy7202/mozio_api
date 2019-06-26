@@ -7,3 +7,4 @@ djangorestframework_simplejwt==4.3.0
 pytest==4.6.3
 pytest-django==3.5.0
 djangorestframework-gis==0.14
+gunicorn==19.9.0

@@ -11,3 +11,5 @@ RUN apt-get update && apt-get install -y libgdal-dev
 
 # Install project dependencies and migrations
 RUN pip install -r requirements.txt
+
+EXPOSE 8000
